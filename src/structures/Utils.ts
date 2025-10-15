@@ -310,6 +310,9 @@ export class ManagerUtils {
         if (SourceLinksRegexes.tidal.test(queryString) && !node.info?.sourceManagers?.includes("tidal")) {
             throw new Error("Query / Link Provided for this Source but Lavalink Node has not 'tidal' enabled");
         }
+        if (SourceLinksRegexes.AllPandoraRegex.test(queryString) && !node.info?.sourceManagers?.includes("pandora")) {
+            throw new Error("Query / Link Provided for this Source but Lavalink Node has not 'pandora' enabled");
+        }
         return;
     }
 
@@ -412,6 +415,15 @@ export class ManagerUtils {
         }
         if (source === "qbrec" && !node.info?.sourceManagers?.includes("qobuz")) {
             throw new Error("Lavalink Node has not 'qobuz' enabled, which is required to have 'qbrec' work");
+        }
+        if (source === "pdsearch" && !node.info?.sourceManagers?.includes("pandora")) {
+            throw new Error("Lavalink Node has not 'pandora' enabled, which is required to have 'pdsearch' work");
+        }
+        if (source === "pdisrc" && !node.info?.sourceManagers?.includes("pandora")) {
+            throw new Error("Lavalink Node has not 'pandora' enabled, which is required to have 'pdisrc' work");
+        }
+        if (source === "pdrec" && !node.info?.sourceManagers?.includes("pandora")) {
+            throw new Error("Lavalink Node has not 'pandora' enabled, which is required to have 'pdrec' work");
         }
 
         return;
